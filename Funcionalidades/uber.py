@@ -35,3 +35,7 @@ def viajar():
     else:
 
         print("Valor total: R$" + str(round(distancia * 4, 2)))
+
+
+if __name__ == '__main__':
+    viajar()
