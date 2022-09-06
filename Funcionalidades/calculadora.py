@@ -1,4 +1,7 @@
 def calculadora():
+    from Visual.interface_simples import interface_simples
+
+    interface_simples('Calculadora')
     operacoes = ('+', '-', '*', '/', '^')
     print("Digite o cálculo que deseja. Ex: x + y")
     existe1 = False
