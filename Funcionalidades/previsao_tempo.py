@@ -9,14 +9,22 @@ def recebe_info_tempo():
     interface_simples('Previsão do tempo')
 
     API_KEY = "122bf90ee3f151a0eade016bef838296"
-    cidade = 'rio de janeiro'
-    link = f'https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_KEY}&lang=pt_br'
 
-    requisicao = requests.get(link)
-    requisicao_dic = requisicao.json()
+    while True:
+        try:
+            cidade = str(input('Digite o nome da cidade: '))
 
-    descricao = requisicao_dic['weather'][0]['description']
-    temperatura = requisicao_dic['main']['temp'] - 273.15
+            link = f'https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_KEY}&lang=pt_br'
+
+            requisicao = requests.get(link)
+            requisicao_dic = requisicao.json()
+
+            descricao = requisicao_dic['weather'][0]['description']
+            temperatura = requisicao_dic['main']['temp'] - 273.15
+        except:
+            print('A cidade informada, não existe no banco de dados.')
+        else:
+            break
 
     print(f'{descricao.capitalize()} | {temperatura:.0f}Cº')
 
