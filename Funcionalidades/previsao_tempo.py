@@ -1,6 +1,7 @@
 def recebe_info_tempo():
     """
     Site da API -> https://openweathermap.org
+    Documentação da API -> https://openweathermap.org/current#multi
     """
     import requests
     from Visual.interface_simples import interface_simples
