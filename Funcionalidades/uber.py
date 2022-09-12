@@ -8,14 +8,18 @@ def viajar():
 
     geolocator = Nominatim(user_agent="cebola")
     hora = datetime.now().hour
-    partida = str(input("Digite o local de partida: "))
-    partida_coord = geolocator.geocode(partida)
-    destino = str(input("Digite o local de destino: "))
-    destino_coord = geolocator.geocode(destino)
-    distancia = float(distance.distance((partida_coord.latitude, partida_coord.longitude),
-                                        (destino_coord.latitude, destino_coord.longitude)).km)
-    print("A distância da viagem é de: " + str(round(distancia, 2)) + "km")
-
+    while True:
+        try:
+            partida = str(input("Digite o local de partida: "))
+            partida_coord = geolocator.geocode(partida)
+            destino = str(input("Digite o local de destino: "))
+            destino_coord = geolocator.geocode(destino)
+            distancia = float(distance.distance((partida_coord.latitude, partida_coord.longitude),
+                                                (destino_coord.latitude, destino_coord.longitude)).km)
+            print("A distância da viagem é de: " + str(round(distancia, 2)) + "km")
+            break
+        except:
+            print("Endereço inválido")
     if distancia <= 3:
         preco_km = 4
     elif distancia <= 5:

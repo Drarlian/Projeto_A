@@ -12,7 +12,8 @@ def recebe_info_tempo():
 
     while True:
         try:
-            cidade = str(input('Digite o nome da cidade: '))
+            ip = requests.get('https://api.ipify.org').text
+            cidade = requests.get('http://ip-api.com/json/' + ip).json()['city']
 
             link = f'https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_KEY}&lang=pt_br'
 
